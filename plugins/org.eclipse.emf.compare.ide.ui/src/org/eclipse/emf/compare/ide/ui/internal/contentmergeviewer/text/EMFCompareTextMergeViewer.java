@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *     Alexandra Buzila - Bug 457117
@@ -63,10 +63,8 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.text.ITextListener;
 import org.eclipse.jface.text.TextEvent;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -151,10 +149,10 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 		IMergeViewerContentProvider contentProvider = (IMergeViewerContentProvider)getContentProvider();
 
-		final String leftValueFromModel = getString((IStreamContentAccessor)contentProvider
-				.getLeftContent(getInput()));
-		final String rightValueFromModel = getString((IStreamContentAccessor)contentProvider
-				.getRightContent(getInput()));
+		final String leftValueFromModel = getString((IStreamContentAccessor)contentProvider.getLeftContent(
+				getInput()));
+		final String rightValueFromModel = getString((IStreamContentAccessor)contentProvider.getRightContent(
+				getInput()));
 
 		SWTUtil.safeAsyncExec(new Runnable() {
 			public void run() {
@@ -163,7 +161,8 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 				IEqualityHelper equalityHelper = getCompareConfiguration().getComparison()
 						.getEqualityHelper();
 				if (!equalityHelper.matchingAttributeValues(leftValueFromModel, leftValueFromWidget)
-						|| !equalityHelper.matchingAttributeValues(rightValueFromModel, rightValueFromWidget)) {
+						|| !equalityHelper.matchingAttributeValues(rightValueFromModel,
+								rightValueFromWidget)) {
 					// only refresh if values are different to avoid select-all of the text.
 					refresh();
 				}
@@ -190,7 +189,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#getCompareConfiguration()
 	 */
 	@Override
@@ -200,7 +199,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * Inhibits this method to avoid asking to save on each input change!!
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#doSave(java.lang.Object,
 	 *      java.lang.Object)
 	 */
@@ -255,7 +254,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.TextMergeViewer#createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -269,18 +268,18 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 	protected void attachListeners(MergeSourceViewer viewer, final MergeViewerSide side) {
 		// Nothing to do on the ancestor pane, which should not be edited
 		if (viewer != null && (side == MergeViewerSide.LEFT || side == MergeViewerSide.RIGHT)) {
-			final StyledText textWidget = viewer.getSourceViewer().getTextWidget();
-			textWidget.addFocusListener(new FocusListener() {
-				public void focusLost(FocusEvent e) {
-					getHandlerService().setGlobalActionHandler(ActionFactory.UNDO.getId(), null);
-					getHandlerService().setGlobalActionHandler(ActionFactory.REDO.getId(), null);
-				}
-
-				public void focusGained(FocusEvent e) {
-					getHandlerService().setGlobalActionHandler(ActionFactory.UNDO.getId(), fUndoAction);
-					getHandlerService().setGlobalActionHandler(ActionFactory.REDO.getId(), fRedoAction);
-				}
-			});
+			// final StyledText textWidget = viewer.getSourceViewer().getTextWidget();
+			// textWidget.addFocusListener(new FocusListener() {
+			// public void focusLost(FocusEvent e) {
+			// getHandlerService().setGlobalActionHandler(ActionFactory.UNDO.getId(), null);
+			// getHandlerService().setGlobalActionHandler(ActionFactory.REDO.getId(), null);
+			// }
+			//
+			// public void focusGained(FocusEvent e) {
+			// getHandlerService().setGlobalActionHandler(ActionFactory.UNDO.getId(), fUndoAction);
+			// getHandlerService().setGlobalActionHandler(ActionFactory.REDO.getId(), fRedoAction);
+			// }
+			// });
 			viewer.getSourceViewer().addTextListener(new ITextListener() {
 				public void textChanged(TextEvent event) {
 					final Object oldInput = getInput();
@@ -299,21 +298,21 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * Specifies whether the given {@code input} is a {@link CompareInputAdapter} that holds a {@link Diff}.
-	 * 
+	 *
 	 * @param input
 	 *            Object to check.
 	 * @return <code>true</code> if {@code input} is a {@link CompareInputAdapter} holding a a {@link Diff}.
 	 */
 	private boolean isCompareInputAdapterHoldingDiff(Object input) {
-		return input instanceof CompareInputAdapter
-				&& ((CompareInputAdapter)input).getComparisonObject() != null
-				&& ((CompareInputAdapter)input).getComparisonObject() instanceof Diff;
+		return input instanceof CompareInputAdapter && ((CompareInputAdapter)input)
+				.getComparisonObject() != null && ((CompareInputAdapter)input)
+						.getComparisonObject() instanceof Diff;
 	}
 
 	/**
 	 * Updates the underlying model with the given {@code modelUpdateStrategy} on the given {@code side} in
 	 * the context of the given {@code diff}.
-	 * 
+	 *
 	 * @param diff
 	 *            The context of the model update.
 	 * @param modelUpdateStrategy
@@ -333,7 +332,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * Specifies whether the content merge viewers on the given {@code side} are editable.
-	 * 
+	 *
 	 * @param side
 	 *            The side to check.
 	 * @return <code>true</code> if the content merge viewer is editable on {@code side}, <code>false</code>
@@ -346,7 +345,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * Returns the current value from the viewer on the given {@code side}.
-	 * 
+	 *
 	 * @param side
 	 *            The side to get the value for.
 	 * @return The content of the viewer on the given {@code side}.
@@ -360,7 +359,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * Creates a compound compare command for the given {@code side} and the given {@code commands}.
-	 * 
+	 *
 	 * @param side
 	 *            The side on which the compare command is to be executed.
 	 * @param commands
@@ -377,7 +376,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.TextMergeViewer#createToolItems(org.eclipse.jface.action.ToolBarManager)
 	 */
 	@SuppressWarnings("restriction")
@@ -395,7 +394,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 	/**
 	 * Called by the framework when the last (or first) diff of the current content viewer has been reached.
 	 * This will open the content viewer for the next (or previous) diff displayed in the structure viewer.
-	 * 
+	 *
 	 * @param next
 	 *            <code>true</code> if we are to open the next structure viewer's diff, <code>false</code> if
 	 *            we should go to the previous instead.
@@ -413,7 +412,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 	/**
 	 * Called by the framework to navigate to the next (or previous) difference. This will open the content
 	 * viewer for the next (or previous) diff displayed in the structure viewer.
-	 * 
+	 *
 	 * @param next
 	 *            <code>true</code> if we are to open the next structure viewer's diff, <code>false</code> if
 	 *            we should go to the previous instead.
@@ -435,7 +434,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.TextMergeViewer#handleDispose(org.eclipse.swt.events.DisposeEvent)
 	 */
 	@Override
@@ -455,7 +454,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 	 */
 	private final class GetContentRunnable implements Runnable {
 		/**
-		 * 
+		 *
 		 */
 		private final boolean isLeft;
 
@@ -479,7 +478,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 	/**
 	 * Command to directly modify the semantic model and reject the related difference.
-	 * 
+	 *
 	 * @author cnotot
 	 */
 	private static class RejectAffectedDiffCommand extends ChangeCommand {
@@ -513,7 +512,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 	/**
 	 * A compound command that also implements the {@link ICompareCopyCommand} to be executable in the context
 	 * of a comparison.
-	 * 
+	 *
 	 * @author Philip Langer <planger@eclipsesource.com>
 	 */
 	private static class CompoundCompareCommand extends CompoundCommand implements ICompareCopyCommand {
@@ -523,7 +522,7 @@ public class EMFCompareTextMergeViewer extends TextMergeViewer implements Comman
 
 		/**
 		 * Creates a new compound command for the given {@code side}.
-		 * 
+		 *
 		 * @param side
 		 *            The side on which this command executes.
 		 */

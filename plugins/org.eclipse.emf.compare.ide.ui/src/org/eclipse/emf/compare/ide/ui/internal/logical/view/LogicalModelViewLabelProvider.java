@@ -1,18 +1,18 @@
 /**
- * 
+ *
  */
 package org.eclipse.emf.compare.ide.ui.internal.logical.view;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.emf.compare.ide.ui.internal.logical.view.LogicalModelView.Presentation;
+import org.eclipse.jface.viewers.NavigatorDecoratingLabelProvider;
 import org.eclipse.jface.viewers.StyledString;
-import org.eclipse.ui.internal.navigator.NavigatorDecoratingLabelProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
  * LabelProvider for the logical model view.
- * 
+ *
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
  */
 @SuppressWarnings("restriction")
@@ -26,7 +26,7 @@ public class LogicalModelViewLabelProvider extends NavigatorDecoratingLabelProvi
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param logicalModelView
 	 *            the view associated with this label provider.
 	 */
@@ -49,7 +49,7 @@ public class LogicalModelViewLabelProvider extends NavigatorDecoratingLabelProvi
 
 	/**
 	 * Compute the relative project path of the given element and returns it as a StyledString.
-	 * 
+	 *
 	 * @param element
 	 *            the given element.
 	 * @return the relative project path of the given element as a StyledString.

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -17,14 +17,14 @@ import java.util.Collection;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.compare.ide.ui.internal.logical.view.LogicalModelView.Presentation;
-import org.eclipse.ui.model.WorkbenchContentProvider;
+//import org.eclipse.ui.model.WorkbenchContentProvider;
 
 /**
  * ContentProvider for the logical model view.
- * 
+ *
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
  */
-public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
+public class LogicalModelViewContentProvider /* extends WorkbenchContentProvider */ {
 
 	/** All models to display. */
 	private Collection<IResource> leaves = Sets.newLinkedHashSet();
@@ -34,7 +34,7 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param logicalModelView
 	 *            the view associated with this content provider.
 	 */
@@ -44,7 +44,7 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 
 	/**
 	 * The models to display in the viewer.
-	 * 
+	 *
 	 * @param leaves
 	 *            the models to display in the viewer.
 	 */
@@ -57,7 +57,7 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.model.BaseWorkbenchContentProvider#hasChildren(java.lang.Object)
 	 */
-	@Override
+	// @Override
 	public boolean hasChildren(Object element) {
 		if (logicalModelView.getPresentation() == Presentation.LIST) {
 			return false;
@@ -69,7 +69,7 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.model.BaseWorkbenchContentProvider#getChildren(java.lang.Object)
 	 */
-	@Override
+	// @Override
 	public Object[] getChildren(Object element) {
 		Object[] children = new Object[0];
 		if (logicalModelView.getPresentation() == Presentation.LIST) {
@@ -79,8 +79,8 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 		} else if (logicalModelView.getPresentation() == Presentation.TREE) {
 			if (element instanceof IContainer) {
 				if (isParentOfALeaf((IContainer)element)) {
-					Object[] tmp = super.getChildren(element);
-					children = getChildren(tmp);
+					// Object[] tmp = super.getChildren(element);
+					// children = getChildren(tmp);
 				}
 			} else if (element instanceof Object[]) {
 				Collection<Object> tmp = Sets.newLinkedHashSet();
@@ -94,7 +94,7 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 				}
 				children = tmp.toArray();
 			} else {
-				children = super.getChildren(element);
+				// children = super.getChildren(element);
 			}
 		}
 		return children;
@@ -102,7 +102,7 @@ public class LogicalModelViewContentProvider extends WorkbenchContentProvider {
 
 	/**
 	 * Check if the given container is a parent of a model to display.
-	 * 
+	 *
 	 * @param container
 	 *            the given container.
 	 * @return true if the given container is a parent of a model to display, false otherwise.

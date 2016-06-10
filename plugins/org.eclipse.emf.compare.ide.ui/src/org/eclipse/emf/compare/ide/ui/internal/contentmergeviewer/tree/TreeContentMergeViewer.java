@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -54,8 +54,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseWheelListener;
+//import org.eclipse.swt.events.MouseWheelListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -71,7 +70,7 @@ import org.eclipse.swt.widgets.TreeItem;
 /**
  * Specialized {@link org.eclipse.compare.contentmergeviewer.ContentMergeViewer} that uses
  * {@link org.eclipse.jface.viewers.TreeViewer} to display left, right and ancestor {@link EObject}.
- * 
+ *
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
  */
 public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
@@ -101,7 +100,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 	 * It sets a {@link TreeContentMergeViewerContentProvider specific}
 	 * {@link #setContentProvider(org.eclipse.jface.viewers.IContentProvider) content provider} to properly
 	 * display ancestor, left and right parts.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent composite to build the UI in
 	 * @param config
@@ -122,7 +121,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#handleDispose(org.eclipse.swt.events.DisposeEvent)
 	 */
 	@Override
@@ -133,7 +132,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#getAncestorMergeViewer()
 	 */
 	// see createMergeViewer() to see it is safe
@@ -144,7 +143,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#getLeftMergeViewer()
 	 */
 	// see createMergeViewer() to see it is safe
@@ -155,7 +154,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#getRightMergeViewer()
 	 */
 	// see createMergeViewer() to see it is safe
@@ -166,7 +165,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#getContents(boolean)
 	 */
 	@Override
@@ -176,7 +175,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#createMergeViewer(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -186,7 +185,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 		IContentProvider contentProvider = new AdapterFactoryContentProvider(fAdapterFactory) {
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
 			 */
 			@Override
@@ -199,7 +198,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getChildren(java.lang.Object)
 			 */
 			@Override
@@ -215,7 +214,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#hasChildren(java.lang.Object)
 			 */
 			@Override
@@ -229,7 +228,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getParent(java.lang.Object)
 			 */
 			@Override
@@ -244,7 +243,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 		AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(fAdapterFactory) {
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
 			 */
 			@Override
@@ -261,12 +260,11 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 						// are one whitespace. Placeholder are then selectable at the very left of itself.
 						// Add a 42 whitespaces label to workaround.
 						text = "                                          "; //$NON-NLS-1$
-					} else if (value == null
-							&& mergeViewerItem.getSideValue(side.opposite()) instanceof Resource) {
+					} else if (value == null && mergeViewerItem.getSideValue(side
+							.opposite()) instanceof Resource) {
 						text = getResourceBundle().getString("UnkownResource"); //$NON-NLS-1$
-					} else if (value == null && mergeViewerItem.getLeft() == null
-							&& mergeViewerItem.getRight() == null
-							&& mergeViewerItem.getAncestor() instanceof Resource) {
+					} else if (value == null && mergeViewerItem.getLeft() == null && mergeViewerItem
+							.getRight() == null && mergeViewerItem.getAncestor() instanceof Resource) {
 						text = getResourceBundle().getString("UnkownResource"); //$NON-NLS-1$
 					} else {
 						text = super.getText(value);
@@ -282,8 +280,8 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 					IMergeViewerItem mergeViewerItem = (IMergeViewerItem)object;
 					if (mergeViewerItem.isInsertionPoint()) {
 						return null;
-					} else if (mergeViewerItem.getSideValue(side) == null
-							&& mergeViewerItem.getSideValue(side.opposite()) instanceof Resource) {
+					} else if (mergeViewerItem.getSideValue(side) == null && mergeViewerItem.getSideValue(side
+							.opposite()) instanceof Resource) {
 						return super.getImage(mergeViewerItem.getSideValue(side.opposite()));
 					} else if (mergeViewerItem.getLeft() == null && mergeViewerItem.getRight() == null
 							&& mergeViewerItem.getAncestor() instanceof Resource) {
@@ -298,10 +296,10 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 		mergeTreeViewer.setLabelProvider(labelProvider);
 
-		mergeTreeViewer.getStructuredViewer().getTree().addListener(SWT.Collapse,
-				new ExpandCollapseListener(mergeTreeViewer, false));
-		mergeTreeViewer.getStructuredViewer().getTree().addListener(SWT.Expand,
-				new ExpandCollapseListener(mergeTreeViewer, true));
+		mergeTreeViewer.getStructuredViewer().getTree().addListener(SWT.Collapse, new ExpandCollapseListener(
+				mergeTreeViewer, false));
+		mergeTreeViewer.getStructuredViewer().getTree().addListener(SWT.Expand, new ExpandCollapseListener(
+				mergeTreeViewer, true));
 
 		mergeTreeViewer.getStructuredViewer().getTree().getVerticalBar().addListener(SWT.Selection,
 				new Listener() {
@@ -310,11 +308,11 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 					}
 				});
 
-		mergeTreeViewer.getStructuredViewer().getTree().addMouseWheelListener(new MouseWheelListener() {
-			public void mouseScrolled(MouseEvent e) {
-				redrawCenterControl();
-			}
-		});
+		// mergeTreeViewer.getStructuredViewer().getTree().addMouseWheelListener(new MouseWheelListener() {
+		// public void mouseScrolled(MouseEvent e) {
+		// redrawCenterControl();
+		// }
+		// });
 		mergeTreeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				redrawCenterControl();
@@ -326,7 +324,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#paintCenter(org.eclipse.swt.widgets.Canvas,
 	 *      org.eclipse.swt.graphics.GC)
 	 */
@@ -352,8 +350,8 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 			final Diff leftDiff = leftData.getDiff();
 			if (leftDiff != null) {
 				if (MergeViewerUtil.isVisibleInMergeViewer(leftDiff, getDifferenceGroupProvider(),
-						getDifferenceFilterPredicate())
-						&& !MergeViewerUtil.isMarkAsMerged(leftDiff, leftData, getCompareConfiguration())) {
+						getDifferenceFilterPredicate()) && !MergeViewerUtil.isMarkAsMerged(leftDiff, leftData,
+								getCompareConfiguration())) {
 					TreeItem rightItem = findRightTreeItemFromLeftDiff(rightItems, leftDiff, leftData);
 
 					if (rightItem != null) {
@@ -425,9 +423,8 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 			final Diff rightDiff = rightData.getDiff();
 			if (leftDiff == rightDiff) {
 				return rightItem;
-			} else if (rightData.getAncestor() == leftData.getAncestor()
-					&& rightData.getRight() == leftData.getRight()
-					&& rightData.getLeft() == leftData.getLeft()) {
+			} else if (rightData.getAncestor() == leftData.getAncestor() && rightData.getRight() == leftData
+					.getRight() && rightData.getLeft() == leftData.getLeft()) {
 				ret = rightItem;
 			}
 		}
@@ -466,7 +463,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 	 */
 	private final class ExpandCollapseListener implements Listener {
 		/**
-		 * 
+		 *
 		 */
 		private final TreeMergeViewer mergeTreeViewer;
 
@@ -510,13 +507,14 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 					// position outside the actual match of the diff. We have to do that since move
 					// differencies are registered only under one container (left or right depending on the
 					// situation)
-					for (Diff referenceChange : filter(comparison.getDifferences(), and(
-							instanceOf(ReferenceChange.class), ofKind(DifferenceKind.MOVE)))) {
+					for (Diff referenceChange : filter(comparison.getDifferences(), and(instanceOf(
+							ReferenceChange.class), ofKind(DifferenceKind.MOVE)))) {
 						Match matchOfValue = comparison.getMatch(((ReferenceChange)referenceChange)
 								.getValue());
 						if (matchOfValue != null) {
 							Match leftContainerMatch = getContainerMatch(comparison, matchOfValue.getLeft());
-							Match rightContainerMatch = getContainerMatch(comparison, matchOfValue.getRight());
+							Match rightContainerMatch = getContainerMatch(comparison, matchOfValue
+									.getRight());
 							Match originContainerMatch = getContainerMatch(comparison, matchOfValue
 									.getOrigin());
 
@@ -566,7 +564,7 @@ public class TreeContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * Return the eContainer match of the given eObject.
-	 * 
+	 *
 	 * @param comparison
 	 *            The actual comparison
 	 * @param value

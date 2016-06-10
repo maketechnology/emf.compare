@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -48,7 +48,7 @@ import org.osgi.service.prefs.BackingStoreException;
 
 /**
  * Preference page used to configure logging in EMFCompare.
- * 
+ *
  * @author <a href="mailto:laurent.delaigue@obeo.fr">Laurent Delaigue</a>
  */
 public class LoggingPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
@@ -61,7 +61,7 @@ public class LoggingPreferencePage extends PreferencePage implements IWorkbenchP
 
 	private Text maxBackupField;
 
-	private final String[] LOG_LEVELS = new String[] {"OFF", "ERROR", "INFO", "DEBUG" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ 
+	private final String[] LOG_LEVELS = new String[] {"OFF", "ERROR", "INFO", "DEBUG" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 	/**
 	 * Constructor.
@@ -72,7 +72,7 @@ public class LoggingPreferencePage extends PreferencePage implements IWorkbenchP
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param title
 	 *            .
 	 * @param image
@@ -84,7 +84,7 @@ public class LoggingPreferencePage extends PreferencePage implements IWorkbenchP
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param title
 	 *            .
 	 */
@@ -105,8 +105,8 @@ public class LoggingPreferencePage extends PreferencePage implements IWorkbenchP
 		group.setLayout(new GridLayout(3, false));
 		group.setText(EMFCompareRCPUIMessages.getString("LoggingPreferencePage.preferencePage.description")); //$NON-NLS-1$
 
-		new Label(group, SWT.LEAD).setText(EMFCompareRCPUIMessages
-				.getString("LoggingPreferencePage.log.level")); //$NON-NLS-1$
+		new Label(group, SWT.LEAD).setText(EMFCompareRCPUIMessages.getString(
+				"LoggingPreferencePage.log.level")); //$NON-NLS-1$
 		levelCombo = new Combo(group, SWT.DROP_DOWN);
 		levelCombo.setItems(LOG_LEVELS);
 		levelCombo.setLayoutData(getDefaultFieldGridData(40));
@@ -122,8 +122,8 @@ public class LoggingPreferencePage extends PreferencePage implements IWorkbenchP
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog dlg = new FileDialog(getShell(), SWT.SAVE);
 				File file = new File(fileField.getText());
-				dlg.setFileName(file.getName());
-				dlg.setFilterPath(file.getParent());
+				// dlg.setFileName(file.getName());
+				// dlg.setFilterPath(file.getParent());
 				String fileName = dlg.open();
 				if (fileName != null) {
 					fileField.setText(fileName);
@@ -205,7 +205,7 @@ public class LoggingPreferencePage extends PreferencePage implements IWorkbenchP
 
 	/**
 	 * Only allows to enter valid digits in numeric fields.
-	 * 
+	 *
 	 * @author <a href="mailto:laurent.delaigue@obeo.fr">Laurent Delaigue</a>
 	 */
 	private static class VerifyIntegerListener implements VerifyListener {

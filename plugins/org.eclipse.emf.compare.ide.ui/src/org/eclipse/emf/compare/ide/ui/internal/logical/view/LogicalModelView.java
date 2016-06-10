@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -54,7 +54,7 @@ import org.eclipse.ui.navigator.CommonViewer;
 
 /**
  * A simple view displaying the resources of a logical model.
- * 
+ *
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
  */
 public class LogicalModelView extends CommonNavigator {
@@ -146,8 +146,8 @@ public class LogicalModelView extends CommonNavigator {
 	@Override
 	protected CommonViewer createCommonViewerObject(Composite aParent) {
 
-		selectionChangedTask = new SelectionChangedJob(EMFCompareIDEUIMessages
-				.getString("LogicalModelView.computingLogicalModel")); //$NON-NLS-1$
+		selectionChangedTask = new SelectionChangedJob(EMFCompareIDEUIMessages.getString(
+				"LogicalModelView.computingLogicalModel")); //$NON-NLS-1$
 		selectionChangedTask.setPriority(Job.LONG);
 
 		progressInfoItem = new JobProgressInfoComposite(selectionChangedTask, aParent, SWT.SMOOTH
@@ -158,7 +158,7 @@ public class LogicalModelView extends CommonNavigator {
 		viewer = super.createCommonViewerObject(aParent);
 		viewer.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		viewContentProvider = new LogicalModelViewContentProvider(this);
-		viewer.setContentProvider(viewContentProvider);
+		// viewer.setContentProvider(viewContentProvider);
 		viewer.setLabelProvider(new LogicalModelViewLabelProvider(this));
 		viewer.setInput(ResourcesPlugin.getWorkspace().getRoot());
 		updateLayout(false, false);
@@ -207,7 +207,7 @@ public class LogicalModelView extends CommonNavigator {
 
 	/**
 	 * Get the presentation of the viewer.
-	 * 
+	 *
 	 * @return selected presentation
 	 */
 	Presentation getPresentation() {
@@ -225,8 +225,8 @@ public class LogicalModelView extends CommonNavigator {
 		}
 		selectionService.addPostSelectionListener(listenToSelection);
 
-		String synchronizationLabel = EMFCompareIDEUIMessages
-				.getString("LogicalModelView.linkWithEditorAndSelection"); //$NON-NLS-1$
+		String synchronizationLabel = EMFCompareIDEUIMessages.getString(
+				"LogicalModelView.linkWithEditorAndSelection"); //$NON-NLS-1$
 		synchronizeAction = new Action(synchronizationLabel, IAction.AS_CHECK_BOX) {
 			@Override
 			public void run() {
@@ -245,8 +245,8 @@ public class LogicalModelView extends CommonNavigator {
 		synchronizeAction.setImageDescriptor(EMFCompareIDEUIPlugin.getDefault().getImageDescriptor(
 				"icons/full/eobj16/synced.gif")); //$NON-NLS-1$
 
-		listPresentationAction = new Action(EMFCompareIDEUIMessages
-				.getString("LogicalModelView.listPresentation.title"), IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
+		listPresentationAction = new Action(EMFCompareIDEUIMessages.getString(
+				"LogicalModelView.listPresentation.title"), IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
 			@Override
 			public void run() {
 				if (!isChecked()) {
@@ -264,8 +264,8 @@ public class LogicalModelView extends CommonNavigator {
 		listPresentationAction.setImageDescriptor(EMFCompareIDEUIPlugin.getDefault().getImageDescriptor(
 				"icons/full/eobj16/flatLayout.gif")); //$NON-NLS-1$
 
-		treePresentationAction = new Action(EMFCompareIDEUIMessages
-				.getString("LogicalModelView.treePresentation.title"), IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
+		treePresentationAction = new Action(EMFCompareIDEUIMessages.getString(
+				"LogicalModelView.treePresentation.title"), IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
 			@Override
 			public void run() {
 				if (!isChecked()) {
@@ -299,7 +299,7 @@ public class LogicalModelView extends CommonNavigator {
 
 	/**
 	 * Switch the display between the progress bar and the viewer.
-	 * 
+	 *
 	 * @param displayProgress
 	 *            true to display the progress bar, false to display the viewer.
 	 * @param doLayout
@@ -319,14 +319,14 @@ public class LogicalModelView extends CommonNavigator {
 
 	/**
 	 * Listener that reacts on selection changes.
-	 * 
+	 *
 	 * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
 	 */
 	private final class ListenToSelection implements ISelectionListener {
 
 		/**
 		 * Notifies this listener that the selection has changed.
-		 * 
+		 *
 		 * @param part
 		 *            the workbench part containing the selection.
 		 * @param selection
@@ -337,8 +337,8 @@ public class LogicalModelView extends CommonNavigator {
 				lastPart = part;
 				lastSelection = selection;
 			}
-			if (synchroActive && selection != null && !selection.isEmpty()
-					&& !selection.equals(selectionChangedTask.getSelection())) {
+			if (synchroActive && selection != null && !selection.isEmpty() && !selection.equals(
+					selectionChangedTask.getSelection())) {
 				selectionChangedTask.setPart(part);
 				selectionChangedTask.setSelection(selection);
 				selectionChangedTask.schedule();
@@ -348,7 +348,7 @@ public class LogicalModelView extends CommonNavigator {
 
 	/**
 	 * Job executed on selection changes.
-	 * 
+	 *
 	 * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
 	 */
 	private final class SelectionChangedJob extends Job {
@@ -365,7 +365,7 @@ public class LogicalModelView extends CommonNavigator {
 
 		/**
 		 * Constructor.
-		 * 
+		 *
 		 * @param name
 		 *            the job's name.
 		 */
@@ -375,7 +375,7 @@ public class LogicalModelView extends CommonNavigator {
 
 		/**
 		 * Set the workbench part.
-		 * 
+		 *
 		 * @param part
 		 *            the workbench part.
 		 */
@@ -385,7 +385,7 @@ public class LogicalModelView extends CommonNavigator {
 
 		/**
 		 * Get the last selection associated with this job.
-		 * 
+		 *
 		 * @return the last selection associated with this job.
 		 */
 		public ISelection getSelection() {
@@ -394,7 +394,7 @@ public class LogicalModelView extends CommonNavigator {
 
 		/**
 		 * Set a new selection to associate with this job.
-		 * 
+		 *
 		 * @param selection
 		 *            the selection.
 		 */
@@ -405,7 +405,7 @@ public class LogicalModelView extends CommonNavigator {
 		/**
 		 * Compute the logical model from the IFile corresponding to the selection, and then display those
 		 * resources in the viewer.
-		 * 
+		 *
 		 * @param monitor
 		 *            to monitor the whole process.
 		 * @return the status of the whole process.
@@ -439,12 +439,10 @@ public class LogicalModelView extends CommonNavigator {
 						if (status != Status.CANCEL_STATUS) {
 							SWTUtil.safeSyncExec(new Runnable() {
 								public void run() {
-									MessageDialog
-											.openError(
-													LogicalModelView.this.getSite().getShell(),
-													EMFCompareIDEUIMessages
-															.getString("LogicalModelView.errorDialog.title"), EMFCompareIDEUIMessages //$NON-NLS-1$
-															.getString("LogicalModelView.errorDialog.message")); //$NON-NLS-1$
+									MessageDialog.openError(LogicalModelView.this.getSite().getShell(),
+											EMFCompareIDEUIMessages.getString(
+													"LogicalModelView.errorDialog.title"), //$NON-NLS-1$
+											EMFCompareIDEUIMessages.getString("LogicalModelView.errorDialog.message")); //$NON-NLS-1$
 								}
 							});
 							status = Status.CANCEL_STATUS;
@@ -455,8 +453,8 @@ public class LogicalModelView extends CommonNavigator {
 				// Retrieve resources from logical models
 				final Collection<IResource> resources;
 				if (status == Status.OK_STATUS) {
-					resources = LogicalModelViewHandlerUtil.getLogicalModelResources(logicalModels,
-							subMonitor.newChild(50));
+					resources = LogicalModelViewHandlerUtil.getLogicalModelResources(logicalModels, subMonitor
+							.newChild(50));
 				} else {
 					resources = Collections.emptySet();
 				}

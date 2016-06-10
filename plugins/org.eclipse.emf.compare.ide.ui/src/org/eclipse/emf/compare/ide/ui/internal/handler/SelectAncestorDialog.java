@@ -24,7 +24,6 @@ import org.eclipse.emf.compare.ide.ui.source.IEMFComparisonSource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
@@ -55,7 +54,7 @@ public class SelectAncestorDialog<T> extends MessageDialog {
 	public SelectAncestorDialog(Shell parentShell, AdapterFactory adapterFactory, T[] theResources) {
 		super(parentShell, CompareMessages.SelectAncestorDialog_title, null,
 				CompareMessages.SelectAncestorDialog_message, MessageDialog.QUESTION, new String[] {
-						IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL }, 0);
+				/* IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL */ }, 0);
 		this.adapterFactory = adapterFactory;
 		this.elements = new ArrayList<T>(Arrays.asList(theResources));
 	}

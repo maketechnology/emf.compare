@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -80,13 +80,13 @@ public class StyledStringConverter {
 				textStyle.borderColor = getColor(style.getBorderColor());
 				switch (style.getBorderStyle()) {
 					case SOLID:
-						textStyle.borderStyle = SWT.BORDER_SOLID;
+						// textStyle.borderStyle = SWT.BORDER_SOLID;
 						break;
 					case DOT:
-						textStyle.borderStyle = SWT.BORDER_DOT;
+						// textStyle.borderStyle = SWT.BORDER_DOT;
 						break;
 					case DASH:
-						textStyle.borderStyle = SWT.BORDER_DASH;
+						// textStyle.borderStyle = SWT.BORDER_DASH;
 						break;
 					case NONE:
 						textStyle.borderStyle = SWT.NONE;
@@ -98,19 +98,19 @@ public class StyledStringConverter {
 					textStyle.underlineColor = getColor(style.getUnderlineColor());
 					switch (style.getUnderlineStyle()) {
 						case SINGLE:
-							textStyle.underlineStyle = SWT.UNDERLINE_SINGLE;
+							// textStyle.underlineStyle = SWT.UNDERLINE_SINGLE;
 							break;
 						case DOUBLE:
-							textStyle.underlineStyle = SWT.UNDERLINE_DOUBLE;
+							// textStyle.underlineStyle = SWT.UNDERLINE_DOUBLE;
 							break;
 						case ERROR:
-							textStyle.underlineStyle = SWT.UNDERLINE_ERROR;
+							// textStyle.underlineStyle = SWT.UNDERLINE_ERROR;
 							break;
 						case LINK:
-							textStyle.underlineStyle = SWT.UNDERLINE_LINK;
+							// textStyle.underlineStyle = SWT.UNDERLINE_LINK;
 							break;
 						case SQUIGGLE:
-							textStyle.underlineStyle = SWT.UNDERLINE_SQUIGGLE;
+							// textStyle.underlineStyle = SWT.UNDERLINE_SQUIGGLE;
 							break;
 					}
 				}

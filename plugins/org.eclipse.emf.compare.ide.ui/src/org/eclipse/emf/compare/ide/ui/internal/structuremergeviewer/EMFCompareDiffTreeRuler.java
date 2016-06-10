@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -56,7 +56,7 @@ import org.eclipse.swt.widgets.TreeItem;
  * A specific canvas that must be presented next to a TreeViewer. It shows consequences of a Diff (required
  * and unmergeable differences), as in the TreeViewer, but in a compact format (small colored rectangles) and
  * with links to respectives Treeitems.
- * 
+ *
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
  */
 public class EMFCompareDiffTreeRuler extends Canvas {
@@ -99,7 +99,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the control's parent.
 	 * @param style
@@ -149,7 +149,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 				handleMouveMoveEvent(e);
 			}
 		};
-		addMouseMoveListener(mouseMoveListener);
+		// addMouseMoveListener(mouseMoveListener);
 
 		mouseTrackListener = new MouseTrackListener() {
 
@@ -165,7 +165,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 				// Do nothing.
 			}
 		};
-		addMouseTrackListener(mouseTrackListener);
+		// addMouseTrackListener(mouseTrackListener);
 
 	}
 
@@ -173,15 +173,15 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 	 * Handles the dispose event on this control.
 	 */
 	public void handleDispose() {
-		removeMouseTrackListener(mouseTrackListener);
-		removeMouseMoveListener(mouseMoveListener);
+		// removeMouseTrackListener(mouseTrackListener);
+		// removeMouseMoveListener(mouseMoveListener);
 		removeMouseListener(mouseClickListener);
 		removePaintListener(paintListener);
 	}
 
 	/**
 	 * Handles the paint event.
-	 * 
+	 *
 	 * @param e
 	 *            the paint event.
 	 */
@@ -256,13 +256,13 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 	}
 
 	private CompareInputAdapter getCompareInputAdapter(TreeNode node) {
-		return (CompareInputAdapter)Iterators.tryFind(node.eAdapters().iterator(),
-				instanceOf(CompareInputAdapter.class)).orNull();
+		return (CompareInputAdapter)Iterators.tryFind(node.eAdapters().iterator(), instanceOf(
+				CompareInputAdapter.class)).orNull();
 	}
 
 	/**
 	 * Handles the mouse click event.
-	 * 
+	 *
 	 * @param e
 	 *            the mouse click event.
 	 */
@@ -341,7 +341,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Handles the mouse move event.
-	 * 
+	 *
 	 * @param e
 	 *            the mouse move event.
 	 */
@@ -361,7 +361,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Handles the mouse hover event.
-	 * 
+	 *
 	 * @param e
 	 *            the mouve hover event.
 	 */
@@ -383,7 +383,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Create an annotation in the tree ruler.
-	 * 
+	 *
 	 * @param e
 	 *            the PaintEvent.
 	 * @param nodeToItem
@@ -421,7 +421,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Returns the full tree path of the given tree item.
-	 * 
+	 *
 	 * @param item
 	 *            the given tree item.
 	 * @return the full tree path of the given tree item.
@@ -441,7 +441,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 	/**
 	 * Checks if the vertical scroll bar of the tree viewer associated with this tree ruler is activated and
 	 * enabled.
-	 * 
+	 *
 	 * @return true if the vertical scroll bar is activated and enabled, false otherwise.
 	 */
 	private boolean isVerticalScrollBarEnabled() {
@@ -454,7 +454,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Draw an annotation (a Rectangle) on this tree ruler.
-	 * 
+	 *
 	 * @param gc
 	 *            the swt GC.
 	 * @param x
@@ -484,14 +484,15 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 	/**
 	 * Returns, for the given tree item, the deepest visible {@link TreeItem} in the Treeviewer associated
 	 * with this TreeRuler.
-	 * 
+	 *
 	 * @param currentItem
 	 *            the given tree item.
 	 * @param deepestVisibleItem
 	 *            the deepest visible tree item (a parent or the item itself) of the given item.
 	 * @return the deepest visible tree item (a parent or the item itself).
 	 */
-	private TreeItem getDeepestVisibleTreeItem(final TreeItem currentItem, final TreeItem deepestVisibleItem) {
+	private TreeItem getDeepestVisibleTreeItem(final TreeItem currentItem,
+			final TreeItem deepestVisibleItem) {
 		TreeItem item = null;
 		if (!currentItem.isDisposed()) {
 			TreeItem parent = currentItem.getParentItem();
@@ -508,7 +509,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Get the previous item of the given {@link TreeItem}.
-	 * 
+	 *
 	 * @param treeItem
 	 *            the given {@link TreeItem}.
 	 * @param index
@@ -567,7 +568,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 
 	/**
 	 * Returns the last visible {@link TreeItem} in the Treeviewer associated with this TreeRuler.
-	 * 
+	 *
 	 * @return the last visible TreeItem in the Treeviewer associated with this TreeRuler.
 	 */
 	private TreeItem getLastVisibleItem() {
@@ -578,7 +579,7 @@ public class EMFCompareDiffTreeRuler extends Canvas {
 	/**
 	 * Returns the last visible child of the given {@link TreeItem} in the Treeviewer associated with this
 	 * TreeRuler.
-	 * 
+	 *
 	 * @param item
 	 *            teh given TreeItem.
 	 * @return the last visible child of the given TreeItem in the Treeviewer associated with this TreeRuler.
