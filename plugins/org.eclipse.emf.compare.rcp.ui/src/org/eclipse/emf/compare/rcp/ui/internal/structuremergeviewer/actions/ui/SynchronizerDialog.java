@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *     Stefan Dirix - bug 473985
@@ -29,7 +29,7 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 
 /**
  * Dialog used to ask user synchronization behavior.
- * 
+ *
  * @author <a href="mailto:arthur.daussy@obeo.fr">Arthur Daussy</a>
  */
 public class SynchronizerDialog extends MessageDialogWithToggle {
@@ -41,15 +41,15 @@ public class SynchronizerDialog extends MessageDialogWithToggle {
 	private static final int NO_BUTTON_INDEX = 1;
 
 	/** Labels used for simple preference synchronization. */
-	private static String[] defaultButtonLabels = new String[] {IDialogConstants.YES_LABEL,
-			IDialogConstants.NO_LABEL, };
+	private static String[] defaultButtonLabels = new String[] {IDialogConstants.get().YES_LABEL,
+			IDialogConstants.get().NO_LABEL, };
 
 	/** Id of the preference page. */
 	private final String preferencePageID;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            Parent shell
 	 * @param title

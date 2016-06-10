@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -41,8 +41,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseWheelListener;
+//import org.eclipse.swt.events.MouseWheelListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
@@ -72,7 +71,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * Call the super constructor.
-	 * 
+	 *
 	 * @see TableContentMergeViewer
 	 */
 	protected TableContentMergeViewer(Composite parent, EMFCompareConfiguration config) {
@@ -88,7 +87,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#handleDispose(org.eclipse.swt.events.DisposeEvent)
 	 */
 	@Override
@@ -99,7 +98,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#getContents(boolean)
 	 */
 	@Override
@@ -109,7 +108,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#getLeftMergeViewer()
 	 */
 	@Override
@@ -119,7 +118,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#getRightMergeViewer()
 	 */
 	@Override
@@ -129,7 +128,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#getAncestorMergeViewer()
 	 */
 	@Override
@@ -139,7 +138,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#createMergeViewer(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.emf.compare.rcp.ui.mergeviewer.IMergeViewer.MergeViewerSide)
 	 */
@@ -151,7 +150,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 		ret.setContentProvider(new ArrayContentProvider() {
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.jface.viewers.ArrayContentProvider#getElements(java.lang.Object)
 			 */
 			@Override
@@ -166,7 +165,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 				.getStructuredViewer()) {
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getFont(java.lang.Object,
 			 *      int)
 			 */
@@ -183,7 +182,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getColumnText(java.lang.Object,
 			 *      int)
 			 */
@@ -211,7 +210,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 			/**
 			 * {@inheritDoc}
-			 * 
+			 *
 			 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getColumnImage(java.lang.Object,
 			 *      int)
 			 */
@@ -240,11 +239,11 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 				redrawCenterControl();
 			}
 		});
-		ret.getStructuredViewer().getTable().addMouseWheelListener(new MouseWheelListener() {
-			public void mouseScrolled(MouseEvent e) {
-				redrawCenterControl();
-			}
-		});
+		// ret.getStructuredViewer().getTable().addMouseWheelListener(new MouseWheelListener() {
+		// public void mouseScrolled(MouseEvent e) {
+		// redrawCenterControl();
+		// }
+		// });
 		ret.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				redrawCenterControl();
@@ -256,7 +255,7 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.EMFCompareContentMergeViewer#paintCenter(org.eclipse.swt.widgets.Canvas,
 	 *      org.eclipse.swt.graphics.GC)
 	 */
@@ -282,8 +281,8 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 			final Diff leftDiff = leftData.getDiff();
 			if (leftDiff != null) {
 				if (MergeViewerUtil.isVisibleInMergeViewer(leftDiff, getDifferenceGroupProvider(),
-						getDifferenceFilterPredicate())
-						&& !MergeViewerUtil.isMarkAsMerged(leftDiff, leftData, getCompareConfiguration())) {
+						getDifferenceFilterPredicate()) && !MergeViewerUtil.isMarkAsMerged(leftDiff, leftData,
+								getCompareConfiguration())) {
 					TableItem rightItem = findRightTableItemFromLeftDiff(rightItems, leftDiff, leftData);
 
 					if (rightItem != null) {
@@ -297,8 +296,8 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 		}
 	}
 
-	private void drawCenterLine(GC g, Rectangle leftClientArea, Rectangle rightClientArea,
-			TableItem leftItem, TableItem rightItem) {
+	private void drawCenterLine(GC g, Rectangle leftClientArea, Rectangle rightClientArea, TableItem leftItem,
+			TableItem rightItem) {
 		Control control = getCenterControl();
 		Point from = new Point(0, 0);
 		Point to = new Point(0, 0);
@@ -306,12 +305,12 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 		Rectangle leftBounds = leftItem.getBounds();
 		Rectangle rightBounds = rightItem.getBounds();
 
-		from.y = leftBounds.y + (leftBounds.height / 2) - leftClientArea.y + 1
-				+ getLeftMergeViewer().getVerticalOffset();
+		from.y = leftBounds.y + (leftBounds.height / 2) - leftClientArea.y + 1 + getLeftMergeViewer()
+				.getVerticalOffset();
 
 		to.x = control.getBounds().width;
-		to.y = rightBounds.y + (rightBounds.height / 2) - rightClientArea.y + 1
-				+ getRightMergeViewer().getVerticalOffset();
+		to.y = rightBounds.y + (rightBounds.height / 2) - rightClientArea.y + 1 + getRightMergeViewer()
+				.getVerticalOffset();
 
 		int[] points = getCenterCurvePoints(from, to);
 		for (int i = 1; i < points.length; i++) {
@@ -328,9 +327,9 @@ public class TableContentMergeViewer extends EMFCompareContentMergeViewer {
 			final Diff rightDiff = ((IMergeViewerItem)rightItem.getData()).getDiff();
 			if (leftDiff == rightDiff) {
 				ret = rightItem;
-			} else if (Objects.equal(rightData.getAncestor(), leftData.getAncestor())
-					&& Objects.equal(rightData.getRight(), leftData.getRight())
-					&& Objects.equal(rightData.getLeft(), leftData.getLeft())) {
+			} else if (Objects.equal(rightData.getAncestor(), leftData.getAncestor()) && Objects.equal(
+					rightData.getRight(), leftData.getRight()) && Objects.equal(rightData.getLeft(), leftData
+							.getLeft())) {
 				ret = rightItem;
 			}
 		}

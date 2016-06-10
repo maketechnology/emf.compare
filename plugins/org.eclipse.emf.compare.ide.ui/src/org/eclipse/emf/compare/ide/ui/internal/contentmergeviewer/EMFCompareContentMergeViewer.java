@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *     Michael Borkowski - bug 462863
@@ -172,13 +172,13 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	@Subscribe
 	public void colorChanged(
-			@SuppressWarnings("unused")/* necessary for @Subscribe */IColorChangeEvent changeColorEvent) {
+			@SuppressWarnings("unused") /* necessary for @Subscribe */IColorChangeEvent changeColorEvent) {
 		getControl().redraw();
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.ide.ui.internal.configuration.EMFCompareConfiguration#editingDomainChange(org.eclipse.emf.compare.domain.ICompareEditingDomain,
 	 *      org.eclipse.emf.compare.domain.ICompareEditingDomain)
 	 */
@@ -242,7 +242,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.rcp.ui.internal.mergeviewer.ICompareColorProvider#getCompareColor()
 	 */
 	public ICompareColor getCompareColor() {
@@ -251,7 +251,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#updateContent(java.lang.Object,
 	 *      java.lang.Object, java.lang.Object)
 	 */
@@ -289,7 +289,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Inhibits this method to avoid asking to save on each input change!!
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#doSave(java.lang.Object,
 	 *      java.lang.Object)
 	 */
@@ -300,7 +300,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#createControls(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -333,7 +333,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Determines the current used theme.
-	 * 
+	 *
 	 * @return The currently used theme if available, {@code null} otherwise.
 	 */
 	private ITheme getCurrentTheme() {
@@ -348,7 +348,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#createToolItems(org.eclipse.jface.action.ToolBarManager)
 	 */
 	@Override
@@ -412,7 +412,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Get the merge viewer affected by this command.
-	 * 
+	 *
 	 * @param command
 	 *            the command.
 	 * @return the merge viewer affected by this command if found, null otherwise.
@@ -441,7 +441,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * From the given selection, get the model element from the given side.
-	 * 
+	 *
 	 * @param selection
 	 *            the given selection.
 	 * @param side
@@ -473,7 +473,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#copy(boolean)
 	 */
 	@Override
@@ -483,7 +483,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#handleResizeAncestor(int, int, int, int)
 	 */
 	@Override
@@ -498,7 +498,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#handleResizeLeftRight(int, int, int,
 	 *      int, int, int)
 	 */
@@ -521,7 +521,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#getControl()
 	 */
 	@Override
@@ -531,7 +531,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#createCenterControl(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -556,11 +556,11 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 				paintCenter(e.gc);
 			}
 		};
-		ret.addPaintListener(paintListener);
+		// ret.addPaintListener(paintListener);
 
 		ret.addDisposeListener(new DisposeListener() {
 			public void widgetDisposed(DisposeEvent e) {
-				ret.removePaintListener(paintListener);
+				// ret.removePaintListener(paintListener);
 				ret.removeSelectionListener(selectionListener);
 			}
 		});
@@ -603,7 +603,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
 	 */
 	public void selectionChanged(SelectionChangedEvent event) {
@@ -628,7 +628,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Update the properties view with the given selection.
-	 * 
+	 *
 	 * @param selection
 	 *            the given selection.
 	 */
@@ -675,7 +675,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Returns the extended property sheet page.
-	 * 
+	 *
 	 * @return the extended property sheet page.
 	 */
 	private ExtendedPropertySheetPage getExtendedPropertySheetPage(IWorkbenchPage activePage) {
@@ -690,9 +690,8 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 						propertyPage = (ExtendedPropertySheetPage)currentPage;
 					} else {
 						IEditorPart activeEditor = activePage.getActiveEditor();
-						if (activeEditor != null
-								&& Platform.getAdapterManager().hasAdapter(activeEditor,
-										"org.eclipse.ui.views.properties.IPropertySheetPage")) { //$NON-NLS-1$
+						if (activeEditor != null && Platform.getAdapterManager().hasAdapter(activeEditor,
+								"org.eclipse.ui.views.properties.IPropertySheetPage")) { //$NON-NLS-1$
 							propertySheet.partActivated(activePage.getActivePart());
 						}
 					}
@@ -705,7 +704,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Manages the read-only state of the properties sheet page for the given selected object.
-	 * 
+	 *
 	 * @param selectedObject
 	 *            the given selected object.
 	 * @param side
@@ -727,7 +726,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * Sets the resource of the selected object to read-only in the appropriate editing domain.
-	 * 
+	 *
 	 * @param selectedObject
 	 *            the given selected object.
 	 */
@@ -746,7 +745,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 	/**
 	 * Checks the element selected in the given viewer in order to determine whether it can be adapted into a
 	 * Diff.
-	 * 
+	 *
 	 * @param viewer
 	 *            The viewer which selection is to be checked.
 	 * @return The first of the Diffs selected in the given viewer, if any.
@@ -768,7 +767,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#handleDispose(org.eclipse.swt.events.DisposeEvent)
 	 */
 	@Override
@@ -792,7 +791,7 @@ public abstract class EMFCompareContentMergeViewer extends ContentMergeViewer im
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.compare.contentmergeviewer.ContentMergeViewer#getCompareConfiguration()
 	 */
 	@Override

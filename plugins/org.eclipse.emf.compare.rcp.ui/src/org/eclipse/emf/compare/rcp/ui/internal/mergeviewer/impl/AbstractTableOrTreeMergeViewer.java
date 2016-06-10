@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -30,7 +30,7 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.graphics.Region;
+//import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Item;
@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Scrollable;
 
 /**
  * An abstract specialization of {@link AbstractStructuredMergeViewer} for Tables or Trees.
- * 
+ *
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
  * @since 4.0
  */
@@ -71,7 +71,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent widget of this viewer.
 	 * @param side
@@ -94,21 +94,21 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 				AbstractTableOrTreeMergeViewer.this.handleEraseItemEvent(event);
 			}
 		};
-		getStructuredViewer().getControl().addListener(SWT.EraseItem, fEraseItemListener);
+		// getStructuredViewer().getControl().addListener(SWT.EraseItem, fEraseItemListener);
 		fPaintItemListener = new Listener() {
 			public void handleEvent(Event event) {
 				AbstractTableOrTreeMergeViewer.this.handlePaintItemEvent(event);
 			}
 		};
-		getStructuredViewer().getControl().addListener(SWT.PaintItem, fPaintItemListener);
+		// getStructuredViewer().getControl().addListener(SWT.PaintItem, fPaintItemListener);
 
 		fMesureItemListener = new MesureItemListener();
-		getStructuredViewer().getControl().addListener(SWT.MeasureItem, fMesureItemListener);
+		// getStructuredViewer().getControl().addListener(SWT.MeasureItem, fMesureItemListener);
 	}
 
 	/**
 	 * Handle the paint item event.
-	 * 
+	 *
 	 * @param event
 	 *            the paint item event.
 	 */
@@ -132,7 +132,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Handle the erase item event.
-	 * 
+	 *
 	 * @param event
 	 *            the erase item event.
 	 */
@@ -149,8 +149,8 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 			Diff diff = mergeViewerItem.getDiff();
 			if (diff != null) {
 				if (MergeViewerUtil.isVisibleInMergeViewer(diff, getDifferenceGroupProvider(),
-						getDifferenceFilter())
-						&& !MergeViewerUtil.isMarkAsMerged(diff, mergeViewerItem, getCompareConfiguration())) {
+						getDifferenceFilter()) && !MergeViewerUtil.isMarkAsMerged(diff, mergeViewerItem,
+								getCompareConfiguration())) {
 					if (mergeViewerItem.isInsertionPoint()) {
 						paintItemDiffBox(event, itemWrapper, diff, getBoundsForInsertionPoint(event,
 								itemWrapper));
@@ -165,7 +165,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 	/**
 	 * Paint a box around the given diff, and a line that will be related to associated element in the
 	 * opposite viewer.
-	 * 
+	 *
 	 * @param event
 	 *            the paint item event.
 	 * @param itemWrapper
@@ -188,7 +188,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 		g.drawRectangle(bounds);
 
 		if (diff.getKind() == DifferenceKind.MOVE) {
-			g.setLineStyle(SWT.LINE_SOLID);
+			// g.setLineStyle(SWT.LINE_SOLID);
 		}
 
 		switch (getSide()) {
@@ -214,7 +214,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Draw a line from center to box.
-	 * 
+	 *
 	 * @param itemWrapper
 	 *            a TableItemWrapper or TreeItemWrapper.
 	 * @param boxBounds
@@ -222,7 +222,8 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 	 * @param g
 	 *            the SWT GC tool.
 	 */
-	private void drawLineFromCenterToBox(AbstractTableOrTreeItemWrapper itemWrapper, Rectangle boxBounds, GC g) {
+	private void drawLineFromCenterToBox(AbstractTableOrTreeItemWrapper itemWrapper, Rectangle boxBounds,
+			GC g) {
 		AbstractTableOrTreeItemWrapper parent = itemWrapper.getParentItem();
 		final int xOffset;
 		if (getContentProvider() instanceof ITreeContentProvider) {
@@ -250,7 +251,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Draw a line from box to center.
-	 * 
+	 *
 	 * @param itemWrapper
 	 *            a TableItemWrapper or TreeItemWrapper.
 	 * @param boxBounds
@@ -258,7 +259,8 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 	 * @param g
 	 *            the SWT GC tool.
 	 */
-	private void drawLineFromBoxToCenter(AbstractTableOrTreeItemWrapper itemWrapper, Rectangle boxBounds, GC g) {
+	private void drawLineFromBoxToCenter(AbstractTableOrTreeItemWrapper itemWrapper, Rectangle boxBounds,
+			GC g) {
 		Rectangle itemBounds = itemWrapper.getBounds();
 		Rectangle clientArea = itemWrapper.getParent().getClientArea();
 		Point from = new Point(0, 0);
@@ -271,7 +273,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Computes the bounds (as Rectangle) in case of the given Item is an insertion point.
-	 * 
+	 *
 	 * @param event
 	 *            the paint item event.
 	 * @param itemWrapper
@@ -293,7 +295,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Set the background, foreground colors and the line style for the given diff.
-	 * 
+	 *
 	 * @param g
 	 *            the SWT GC tool.
 	 * @param diff
@@ -306,7 +308,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 		final boolean isThreeWay = comparison.isThreeWay();
 
 		if (diff.getKind() == DifferenceKind.MOVE) {
-			g.setLineStyle(SWT.LINE_DOT);
+			// g.setLineStyle(SWT.LINE_DOT);
 		}
 
 		g.setForeground(fColorProvider.getCompareColor().getStrokeColor(diff, isThreeWay, false, selected));
@@ -315,7 +317,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Computes the bounds (as Rectangle) of the given Item.
-	 * 
+	 *
 	 * @param event
 	 *            the paint item event.
 	 * @param itemWrapper
@@ -348,11 +350,11 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 		if (event.index == columnCount - 1 || columnCount == 0) {
 			int width = treeBounds.x + treeBounds.width - event.x;
 			if (width > 0) {
-				Region region = new Region();
-				g.getClipping(region);
-				region.add(event.x, event.y, width, event.height);
-				g.setClipping(region);
-				region.dispose();
+				// Region region = new Region();
+				// g.getClipping(region);
+				// region.add(event.x, event.y, width, event.height);
+				// g.setClipping(region);
+				// region.dispose();
 			}
 		}
 		g.setAdvanced(true);
@@ -362,7 +364,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * Check the event indicates a user-interface component state is selected.
-	 * 
+	 *
 	 * @param event
 	 *            the event.
 	 * @return true, if the event indicates a user-interface component state is selected, false otherwise.
@@ -373,20 +375,20 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.compare.rcp.ui.internal.mergeviewer.impl.AbstractStructuredMergeViewer#handleDispose(org.eclipse.swt.events.DisposeEvent)
 	 */
 	@Override
 	protected void handleDispose(DisposeEvent event) {
-		getStructuredViewer().getControl().removeListener(SWT.MeasureItem, fMesureItemListener);
-		getStructuredViewer().getControl().removeListener(SWT.EraseItem, fEraseItemListener);
-		getStructuredViewer().getControl().removeListener(SWT.PaintItem, fPaintItemListener);
+		// getStructuredViewer().getControl().removeListener(SWT.MeasureItem, fMesureItemListener);
+		// getStructuredViewer().getControl().removeListener(SWT.EraseItem, fEraseItemListener);
+		// getStructuredViewer().getControl().removeListener(SWT.PaintItem, fPaintItemListener);
 		super.handleDispose(event);
 	}
 
 	/**
 	 * A specific implementation of {@link IElementComparer} that compare EMF Compare Viewer Items.
-	 * 
+	 *
 	 * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
 	 * @since 4.0
 	 */
@@ -399,8 +401,8 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 			if (element instanceof IMergeViewerItem) {
 				IMergeViewerItem item = (IMergeViewerItem)element;
 				Diff diff = item.getDiff();
-				if (diff != null && diff.getConflict() != null
-						&& diff.getConflict().getKind() == ConflictKind.PSEUDO) {
+				if (diff != null && diff.getConflict() != null && diff.getConflict()
+						.getKind() == ConflictKind.PSEUDO) {
 					// we do not create only one item per diff in pseudo conflict, so we hash the conflict and
 					// not the diff
 					hashCode = Objects.hashCode(item.getAncestor(), diff.getConflict());
@@ -425,20 +427,18 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 				IMergeViewerItem itemB = (IMergeViewerItem)b;
 				Diff diffA = itemA.getDiff();
 				Diff diffB = itemB.getDiff();
-				if (diffA != null && diffA.getConflict() != null
-						&& diffA.getConflict().getKind() == ConflictKind.PSEUDO && diffB != null
-						&& diffB.getConflict() != null
+				if (diffA != null && diffA.getConflict() != null && diffA.getConflict()
+						.getKind() == ConflictKind.PSEUDO && diffB != null && diffB.getConflict() != null
 						&& diffB.getConflict().getKind() == ConflictKind.PSEUDO) {
 					// pseudo conflict
-					ret = Objects.equal(itemA.getAncestor(), itemB.getAncestor())
-							&& Objects.equal(diffA.getConflict(), diffB.getConflict());
-				} else if (diffA != null && diffB != null && itemA.getLeft() == null
-						&& itemA.getRight() == null && itemB.getLeft() == null && itemB.getRight() == null) {
+					ret = Objects.equal(itemA.getAncestor(), itemB.getAncestor()) && Objects.equal(diffA
+							.getConflict(), diffB.getConflict());
+				} else if (diffA != null && diffB != null && itemA.getLeft() == null && itemA
+						.getRight() == null && itemB.getLeft() == null && itemB.getRight() == null) {
 					ret = Objects.equal(diffA, diffB);
 				} else {
-					ret = Objects.equal(itemA.getLeft(), itemB.getLeft())
-							&& Objects.equal(itemA.getRight(), itemB.getRight())
-							&& Objects.equal(itemA.getAncestor(), itemB.getAncestor())
+					ret = Objects.equal(itemA.getLeft(), itemB.getLeft()) && Objects.equal(itemA.getRight(),
+							itemB.getRight()) && Objects.equal(itemA.getAncestor(), itemB.getAncestor())
 							&& Objects.equal(diffA, diffB);
 				}
 			} else {
@@ -451,7 +451,7 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 	/**
 	 * This will be used in order to resize the table items to an even height. Otherwise the lines we draw
 	 * around it look somewhat flattened.
-	 * 
+	 *
 	 * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
 	 * @since 4.0
 	 */
@@ -463,13 +463,13 @@ public abstract class AbstractTableOrTreeMergeViewer extends AbstractStructuredM
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
 		 */
 		public void handleEvent(Event event) {
 			if (fHeight == Integer.MIN_VALUE) {
-				AbstractTableOrTreeItemWrapper itemWrapper = AbstractTableOrTreeItemWrapper
-						.create((Item)event.item);
+				AbstractTableOrTreeItemWrapper itemWrapper = AbstractTableOrTreeItemWrapper.create(
+						(Item)event.item);
 				Rectangle imageBounds = itemWrapper.getImageBounds(0);
 				fHeight = imageBounds.height + 3;
 			}
